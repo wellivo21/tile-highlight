@@ -5,6 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tile Highlights</title>
+
+    <style>
+        :root {
+            --tile-size: 100px;
+        }
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* change width based on the number of tiles*/
+            width: 300px;
+        }
+        .tile {
+            width: var(--tile-size);
+            height: var(--tile-size);
+            border: 1px solid black;
+        }
+        .tile.selected {
+            background-color: #008000;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -21,7 +41,16 @@
         </label>
 
         <div class="wrapper">
-
+            <!-- 3x3 tiles for styles code -->
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
         </div>
 
     </main>
