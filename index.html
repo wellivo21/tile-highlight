@@ -10,6 +10,8 @@
         /* CSS variables */
         :root {
             --tile-size: 12.5rem;
+            --main-color: #fff;
+            --text-color: #000
         }
 
         /* CSS reset */
@@ -25,10 +27,13 @@
             font-size: 62.5%;
         }
         body {
+            background-color: var(--main-color);
             display: grid;
             grid-template-columns: 50px 1fr 50px;
             justify-items: center;
             padding-block: 3rem;
+            
+            transition: 0.5s all ease;
         }
         main {
             grid-column: 2/3;
@@ -39,9 +44,18 @@
             gap: 2.4rem;
         }
 
+        h1, p, label, .dark-mode-icon {
+            color: var(--text-color);
+        }
+
         /* Not General styes */
         h1 {
             font-size: 3.2rem;
+        }
+        .dark-mode-icon {
+            align-self: center;
+            font-size: 2.4rem;
+            cursor: pointer;
         }
         label p {
             font-size: 2.4rem;
@@ -56,7 +70,7 @@
         .tile {
             width: var(--tile-size);
             height: var(--tile-size);
-            border: 1px solid black;
+            border: 1px solid var(--text-color);
         }
         .tile.selected {
             background-color: #008000;
@@ -89,11 +103,13 @@
 </head>
 <body>
     <main>
+        <ion-icon name="contrast-outline" class='dark-mode-icon' aria-label='Icon to toggle between light and dark mode.'></ion-icon>
+
         <h1>Tile Highlights</h1>
 
         <label>
             <p>Please select the number of tiles:</p>
-            <select id="">
+            <select>
                 <option value="">--Number of tiles--</option>
                 <option value="3">3</option>
                 <option value="6">6</option>
@@ -156,13 +172,34 @@
             });
         }
 
+        const darkMode = function() {
+            const rootEl = document.querySelector(":root");
+            const bodyEl = document.querySelector("body");
+            const darkModeIconEl = document.querySelector(".dark-mode-icon");
+            darkModeIconEl.addEventListener("click", () => {
+                if(!bodyEl.classList.contains("dark-mode")) {
+                    bodyEl.classList.add("dark-mode");
+                    rootEl.style.setProperty("--main-color", "#000")
+                    rootEl.style.setProperty("--text-color", "#fff")
+    
+                } else {
+                    bodyEl.classList.remove("dark-mode");
+                    rootEl.style.setProperty("--main-color", "#fff")
+                    rootEl.style.setProperty("--text-color", "#000")
+                }
+            })
+        }
+
         const init = function() {
             buildGrid();
             tileHighlight();
+            darkMode();
         }
 
         init()
-
     </script>
+    <!-- IonIcons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
