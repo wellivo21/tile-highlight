@@ -24,4 +24,7 @@ label select {
 .tile.selected {
     background-color: #008000;
 }
+.no-click {
+    pointer-events: none;
+}
 
