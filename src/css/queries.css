@@ -1,0 +1,22 @@
+@media screen and (max-width: 480px) {
+    body {
+        grid-template-columns: 25px 1fr 25px;
+    }
+}
+@media screen and (max-width: 430px) {
+    html {
+        /* 1rem = 9px */
+        font-size: 56.25%;
+    }
+}
+@media screen and (max-width: 380px) {
+    html {
+        /* 1rem = 8px */
+        font-size: 50%;
+    }
+}
+@media screen and (max-width: 340px) {
+    html {
+        font-size: 43.75%;
+    }
+}

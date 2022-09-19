@@ -1,0 +1,27 @@
+h1 {
+    font-size: 3.2rem;
+}
+.dark-mode-icon {
+    align-self: center;
+    font-size: 2.4rem;
+    cursor: pointer;
+}
+label p {
+    font-size: 2.4rem;
+}
+label select {
+    font-size: 1.8rem;
+}
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.tile {
+    width: var(--tile-size);
+    height: var(--tile-size);
+    border: 1px solid var(--text-color);
+}
+.tile.selected {
+    background-color: #008000;
+}
+

@@ -1,0 +1,40 @@
+/* CSS variables */
+:root {
+    --tile-size: 12.5rem;
+    --main-color: #fff;
+    --text-color: #000
+}
+
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    /* 62.5% = 10px. 1rem = 10px */
+    font-size: 62.5%;
+}
+body {
+    background-color: var(--main-color);
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    justify-items: center;
+    padding-block: 3rem;
+    
+    transition: 0.5s all ease;
+}
+main {
+    grid-column: 2/3;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+}
+
+h1, p, label, .dark-mode-icon {
+    color: var(--text-color);
+}
