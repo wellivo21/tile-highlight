@@ -1,8 +1,7 @@
 # Tile Highlights Exercise
 
 ## Descrição
-Tile Highlights disponibiliza ao usuário clicar em todos os quadrados presentes no *grid
-grid*, preenchendo-os. Ao preencher todos os quadrados, automaticamente os mesmos irão "esvaziar" (descolorir) na mesma ordem em que foram clicados.
+Tile Highlights disponibiliza ao usuário clicar em todos os quadrados presentes no *grid*, preenchendo-os. Ao preencher todos os quadrados, automaticamente os mesmos irão "esvaziar" (descolorir) na mesma ordem em que foram clicados. Você pode conferir o resultado final clicando [aqui](https://tile-highlight-ivo.netlify.app/).
 
 ## Explicação
 Este exercício consiste em:
