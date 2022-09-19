@@ -33,6 +33,7 @@
         <label>
             <p>Please select the number of tiles:</p>
             <select id="">
+                <option value="">--Number of tiles--</option>
                 <option value="3">3</option>
                 <option value="6">6</option>
                 <option value="9">9</option>
@@ -41,18 +42,66 @@
         </label>
 
         <div class="wrapper">
-            <!-- 3x3 tiles for styles code -->
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <!-- tiles -->
         </div>
-
     </main>
+
+    <script>
+        // this functions gets the value of the select input.
+        const selectValue = function() {
+            const selectEl = document.querySelector("label select");
+            return selectEl.value;
+        }
+
+        const buildGrid = function() {
+            const wrapperEl = document.querySelector(".wrapper")
+            const selectEl = document.querySelector("label select")
+
+            selectEl.addEventListener("change", () => {
+                wrapperEl.innerHTML = "";
+                const numOfTiles = selectEl.value
+                if(numOfTiles !== "") {
+                    const tileElements = [];
+                    for (let index = 0; index < numOfTiles; index++) {
+                        const newTile = document.createElement("div");
+                        newTile.classList.add("tile");
+                        wrapperEl.insertAdjacentElement("beforeend", newTile)
+                    }
+                }
+            })
+        }
+        
+        const tileHighlight = function() {
+            const selectedOrder = []
+            document.addEventListener("click", (e) => {
+                // error handling
+                if(!e.target.classList.contains("tile")) return;
+                if(selectedOrder.includes(e.target)) return;
+        
+                e.target.classList.add("selected");
+                selectedOrder.push(e.target);
+
+                // select value
+                const numOfTiles = selectValue()                
+                if(selectedOrder.length >= numOfTiles) {
+                    const interval = setInterval(() => {
+                        const tile = selectedOrder.shift();
+                        tile.classList.remove("selected");
+                        if(selectedOrder.length === 0) {
+                            clearInterval(interval)
+                        }
+                    }, 500)
+                }
+            });
+        }
+
+        const init = function() {
+            buildGrid();
+            tileHighlight();
+        }
+
+        init()
+
+    </script>
 </body>
 </html>
